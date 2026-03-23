@@ -1,5 +1,6 @@
 # Production API image — set DATABASE_URL, JWT_SECRET, etc. at run time.
-FROM node:20-alpine
+# Use Debian slim to avoid Alpine musl/OpenSSL runtime issues with Prisma.
+FROM node:20-bookworm-slim
 WORKDIR /app
 COPY package.json ./
 RUN npm install
