@@ -4,6 +4,7 @@ FROM node:20-bookworm-slim
 WORKDIR /app
 ENV PRISMA_CLI_BINARY_TARGETS=debian-openssl-3.0.x
 COPY package.json ./
+COPY prisma ./prisma
 RUN apt-get update \
   && apt-get install -y --no-install-recommends openssl ca-certificates \
   && rm -rf /var/lib/apt/lists/*
